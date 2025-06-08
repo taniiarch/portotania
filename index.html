@@ -1,0 +1,450 @@
+!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Tania Putri Rachmadani</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- React and ReactDOM CDNs -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+        /* Custom animations if needed beyond Tailwind's */
+        @keyframes fadeInDown {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes bounceIn {
+          0% { transform: scale(0.3); opacity: 0; }
+          50% { transform: scale(1.05); opacity: 1; }
+          70% { transform: scale(0.9); }
+          100% { transform: scale(1); }
+        }
+
+        .animate-fadeInDown { animation: fadeInDown 1s ease-out forwards; }
+        .animate-fadeInUp { animation: fadeInUp 1s ease-out forwards; }
+        .animate-fadeIn { animation: fadeIn 1.5s ease-out forwards; }
+        .animate-bounceIn { animation: bounceIn 1s ease-out forwards; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            // Data untuk proyek-proyek Anda
+            const projects = [
+                {
+                    title: 'Dasbor Intelijen Media Interaktif',
+                    image: 'https://placehold.co/600x400/FFFDD0/262626?text=Dasbor+Intelijen+Media', // Gambar placeholder
+                    summary: 'Sebuah dasbor Streamlit interaktif untuk menganalisis data media sosial dan digital. Memungkinkan pengguna mengunggah CSV, melihat visualisasi data yang bersih, dan mendapatkan wawasan bertenaga AI dari sentimen, engagement, platform, jenis media, dan lokasi.',
+                    tools: ['Python', 'Streamlit', 'Pandas', 'Plotly', 'Google Generative AI (Gemini API)'],
+                    impact: 'Meningkatkan kemampuan analisis data media, memungkinkan pengambilan keputusan strategis yang lebih cepat dan efektif di bidang produksi media.',
+                    liveDemo: 'https://mediainteltaniaputrir.streamlit.app/',
+                    github: 'https://mediainteltaniaputrir.streamlit.app/' // Mengubah link GitHub untuk proyek dasbor menjadi link Streamlit
+                },
+                {
+                    title: 'Google Keyword Planner for SEO',
+                    image: 'https://placehold.co/600x400/FFFDD0/262626?text=Google+Keyword+Planner', // Gambar placeholder
+                    summary: 'Pemanfaatan Google Keyword Planner untuk riset kata kunci yang komprehensif, analisis persaingan, dan perencanaan konten guna mengoptimalkan strategi SEO dan visibilitas online.',
+                    tools: ['Google Keyword Planner', 'SEO Tools', 'Keyword Research', 'Data Analysis'],
+                    impact: 'Mengoptimalkan strategi SEO dan perencanaan konten, meningkatkan peringkat pencarian organik, dan mendorong lalu lintas yang relevan ke platform digital.',
+                    liveDemo: 'https://docs.google.com/document/d/1hoCJXIAgshiCPW0CD8wag8TsaGQEBstrkVOSCUwj0iU/edit?tab=t.0&usp=embed_facebook',
+                    github: 'https://docs.google.com/document/d/1hoCJXIAgshiCPW0CD8wag8TsaGQEBstrkVOSCUwj0iU/edit?tab=t.0&usp=embed_facebook' // Menggunakan link liveDemo sebagai link proyek
+                },
+                {
+                    title: 'Membuat, Mempromosikan, dan Menerbitkan Lagu dengan AI',
+                    image: 'https://placehold.co/600x400/FFFDD0/262626?text=Proyek+Musik+AI', // Gambar placeholder
+                    summary: 'Eksplorasi penggunaan kecerdasan buatan dalam proses kreasi musik, produksi, promosi, dan penerbitan lagu. Proyek ini menunjukkan potensi AI dalam industri musik modern.',
+                    tools: ['AI Music Generation Tools', 'Audio Editing Software', 'SoundCloud', 'Digital Distribution Platforms'],
+                    impact: 'Membuka jalan baru dalam produksi musik inovatif, membantu artis mencapai audiens yang lebih luas, dan menunjukkan peran AI dalam industri kreatif.',
+                    liveDemo: 'https://soundcloud.com/reverie-153201149/shattered-lies',
+                    github: 'https://soundcloud.com/reverie-153201149/shattered-lies' // Menggunakan link liveDemo sebagai link proyek
+                },
+                {
+                    title: 'AI di Industri Kreatif: Iklan Ayam Goreng',
+                    image: 'https://placehold.co/600x400/FFFDD0/262626?text=Iklan+Ayam+Goreng+AI', // Gambar placeholder
+                    summary: 'Mengembangkan iklan yang dihasilkan AI untuk merek ayam goreng, menunjukkan bagaimana kecerdasan buatan dapat merampingkan proses kreatif dan menghasilkan konten pemasaran yang menarik.',
+                    tools: ['AI Generation (e.g., Video/Image AI)', 'Creative Tools', 'Marketing Strategy'],
+                    impact: 'Meningkatkan efisiensi dalam pembuatan konten iklan, memungkinkan eksplorasi ide kreatif baru, dan berpotensi menarik audiens dengan pendekatan pemasaran yang inovatif.',
+                    liveDemo: 'https://www.youtube.com/watch?v=n7LWC2z-Lh8',
+                    github: 'https://www.youtube.com/watch?v=n7LWC2z-Lh8' // Menggunakan link YouTube sebagai link proyek
+                },
+                {
+                    title: 'Film: We Belong Together',
+                    role: 'Make Up Artist',
+                    image: 'https://placehold.co/600x400/FFFDD0/262626?text=Film+We+Belong+Together', // Gambar placeholder
+                    summary: 'Bertanggung jawab atas desain dan eksekusi tata rias untuk seluruh pemeran film, memastikan tampilan yang sesuai dengan karakter dan narasi cerita.',
+                    tools: ['Tata Rias Film', 'Desain Karakter', 'Manajemen Waktu'],
+                    impact: 'Berhasil menciptakan tampilan visual karakter yang mendukung kedalaman emosional dan otentisitas film, berkontribusi pada pengalaman sinematik secara keseluruhan.',
+                    liveDemo: '#', // Harap perbarui dengan link demo film jika ada
+                    github: '#' // Harap perbarui dengan link proyek/portofolio terkait jika ada
+                },
+                {
+                    title: 'Film: Kamar Terakhir',
+                    role: 'Produser',
+                    image: 'https://placehold.co/600x400/FFFDD0/262626?text=Film+Kamar+Terakhir', // Gambar placeholder
+                    summary: 'Memimpin seluruh aspek produksi film, termasuk perencanaan, anggaran, perekrutan kru, koordinasi logistik, dan memastikan proyek selesai sesuai jadwal dan anggaran.',
+                    tools: ['Manajemen Produksi Film', 'Manajemen Anggaran', 'Kepemimpinan Tim', 'Negosiasi'],
+                    impact: 'Berhasil mengelola proyek film dari pra-produksi hingga pasca-produksi, memastikan efisiensi operasional dan kualitas artistik tercapai sesuai visi kreatif.',
+                    liveDemo: '#', // Harap perbarui dengan link demo film jika ada
+                    github: '#' // Harap perbarui dengan link proyek/portofolio terkait jika ada
+                },
+            ];
+
+            // Data keahlian inti
+            const skills = {
+                'Pemasaran Digital & Analitik': ['Media Intelligence', 'Social Media Marketing', 'AI-Powered Marketing', 'Content Strategy', 'Social Media Analytics', 'Google AI Studio', 'Google Trends'],
+                'Manajemen & Kepemimpinan': ['Event Management', 'Leadership', 'Fundraising & Sponsorship', 'Strategic Planning', 'Time Management', 'Vendor & Donor Relations'],
+                'Kreatif & Komunikasi': ['Content Creation', 'Public Speaking (MC)', 'Graphic Design', 'Videography', 'Photography', 'Creative Direction'],
+                'Pengembangan Web': ['React.js', 'HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS', 'Bootstrap'],
+                'Ilmu Data & AI': ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Scikit-learn', 'Streamlit', 'Generative AI (Gemini, ChatGPT)'],
+                'Desain UI/UX': ['Figma', 'Adobe XD', 'Wireframing', 'Prototyping', 'User Research'],
+                'Lain-lain': ['Git & GitHub', 'Deployment (Streamlit Cloud)', 'Microsoft Office Suite']
+            };
+
+            // Data Pengalaman Profesional & Organisasi
+            const professionalExperience = [
+                {
+                    title: 'Key Opinion Leader (KOL) & Content Creator',
+                    role: 'Freelance',
+                    duration: '2024 - Sekarang',
+                    description: 'Berkolaborasi dengan lebih dari 20+ merek ternama (Sociolla, SAFF & Co., Bio-Aqua, Wardah, dll.) untuk meningkatkan brand awareness dan engagement melalui konten media sosial.',
+                },
+                {
+                    title: 'Head of Gourmet',
+                    role: 'UI Fashion Week',
+                    duration: 'Agu 2023 - Sekarang',
+                    description: 'Memimpin divisi dalam mencari dan menjalin kerja sama dengan sponsor F&B untuk seluruh rangkaian acara.',
+                },
+                {
+                    title: 'Public Relations Trainee',
+                    role: 'Puan Bisa',
+                    duration: 'Nov 2023 - Sekarang',
+                    description: 'Mengasah kemampuan kehumasan dalam organisasi yang berfokus pada pemberdayaan perempuan.',
+                },
+                {
+                    title: 'Media Intelligence Analyst',
+                    role: 'Universitas Indonesia (Academic Course Project)',
+                    duration: 'Mar 2024 - Jun 2024',
+                    description: 'Menganalisis strategi media digital kompetitor menggunakan tools berbasis AI dan menerapkan framework industri (AIDA, ABCD) untuk evaluasi konten.',
+                },
+                {
+                    title: 'Head of Donor Division',
+                    role: 'OASIS Art Performance Committee',
+                    duration: 'Jan 2022 - Agu 2022',
+                    description: 'Bertanggung jawab menyusun proposal dan mengelola seluruh proses penggalangan dana untuk pentas seni sekolah.',
+                },
+                {
+                    title: 'Wakil Ketua Bidang Publikasi',
+                    role: 'OSIS',
+                    duration: 'Agu 2018 - Apr 2020',
+                    description: 'Memimpin eksekusi seluruh kebutuhan materi publikasi, termasuk desain grafis, fotografi, dan videografi.',
+                },
+            ];
+
+            // Data Pengalaman Sukarelawan
+            const volunteerExperience = [
+                {
+                    title: 'Program Officer',
+                    organization: 'Ruang Cahya',
+                    duration: 'Nov 2023 - Sekarang',
+                    description: 'Berkontribusi dalam merancang dan menjalankan program edukasi serta pengembangan diri.',
+                },
+                {
+                    title: 'Tim Media Sosial',
+                    organization: 'Himpunan Mahasiswa Produksi Media UI',
+                    duration: 'Apr 2024 - Apr 2025',
+                    description: 'Terlibat dalam pengelolaan konten dan strategi media sosial untuk himpunan mahasiswa.',
+                },
+                {
+                    title: 'Sukarelawan',
+                    organization: 'Yayasan Kasih Anak Kanker Indonesia (YKAI), Bumi Journey (aksi penanaman mangrove), dan Bantu Indonesia (fokus hak asasi manusia).',
+                    duration: '', // Durasi bisa kosong jika bervariasi
+                    description: 'Berbagai peran sukarelawan di organisasi yang berfokus pada kesehatan anak, lingkungan, dan hak asasi manusia.',
+                },
+            ];
+
+            // Data Penghargaan & Sertifikasi
+            const awardsCertifications = {
+                awards: [
+                    { name: 'Best Volunteer of the Month', issuer: 'Bantu Indonesia', date: 'Des 2023' },
+                    { name: 'TOP 30 Finalist Brand Ambassador', issuer: 'Youth Idea Community', date: 'Jan 2023' },
+                ],
+                certifications: [
+                    { name: 'Fundamentals of Digital Marketing', issuer: 'Google Digital Academy' },
+                    { name: 'Generative AI for Educators Certificate', issuer: 'Google Digital Academy' },
+                    { name: 'Youtube Music Certification', issuer: 'Google Digital Academy' },
+                    { name: 'Master of Ceremony (MC)', issuer: 'Ruang Cahya' },
+                    { name: 'Modelling Course', issuer: 'Okky Walla Modelling School' },
+                ],
+            };
+
+            return (
+                <div className="font-sans text-gray-800 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 min-h-screen">
+                    {/* Bagian Hero */}
+                    <section className="relative h-screen flex items-center justify-center text-center p-6 bg-cover bg-center" style={{ backgroundImage: `url('https://placehold.co/1920x1080/DB2777/F9A8D4?text=Background+Hero+Section')` }}>
+                        <div className="absolute inset-0 bg-black opacity-60"></div> {/* Overlay */}
+                        <div className="relative z-10 text-white max-w-4xl mx-auto">
+                            <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 animate-fadeInDown">
+                                Tania Putri Rachmadani
+                            </h1>
+                            <p className="text-2xl sm:text-3xl font-light mb-6 animate-fadeInUp">
+                                Mahasiswi Universitas Indonesia | Digital Marketing & Media Intelligence Enthusiast
+                            </p>
+                            <a
+                                href="#contact"
+                                className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-bounceIn"
+                            >
+                                Hubungi Saya
+                            </a>
+                        </div>
+                    </section>
+
+                    {/* Bagian About (Tentang Saya) */}
+                    <section id="about" className="py-20 bg-white px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">Tentang Saya 👋</h2>
+                            <div className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                                    Sebagai mahasiswi Universitas Indonesia, saya memiliki minat mendalam pada dunia media intelligence, pemasaran berbasis AI, dan analisis video yang terus berkembang. Pengalaman langsung menggunakan tools seperti Google AI Studio, Google Trends, dan analisis sentimen telah membentuk pemahaman saya tentang bagaimana wawasan berbasis data dapat mendorong strategi digital yang berdampak.
+                                </p>
+                                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                                    Saya membawa latar belakang yang kuat dalam produksi media, yang diasah melalui keterlibatan dalam berbagai kegiatan organisasi dan pengalaman sukarelawan. Saya juga telah mengikuti kursus modelling, yang telah meningkatkan kepercayaan diri, keterampilan presentasi, dan kreativitas saya. Kekuatan saya terletak pada perencanaan strategis, pemikiran kreatif, dan manajemen waktu—keterampilan yang telah membantu saya berhasil menyelenggarakan dan melaksanakan berbagai acara.
+                                </p>
+                                <p className="text-lg text-gray-700 leading-relaxed">
+                                    Dikenal sebagai pribadi yang sangat terorganisir dan mudah beradaptasi, saya berkembang di lingkungan yang dinamis dan selalu bersemangat untuk belajar. Dengan kemahiran komputer yang solid dan minat pada strategi konten, pemasaran digital, dan analisis media sosial, saya bertujuan untuk tumbuh menjadi seorang businesswoman dan influencer yang sukses—yang menciptakan nilai, bercerita, dan menginspirasi orang lain melalui platform digital.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bagian Pendidikan */}
+                    <section id="education" className="py-20 bg-gray-100 px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">Pendidikan 🎓</h2>
+                            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                                <h3 className="text-2xl font-semibold text-purple-700 mb-2">Universitas Indonesia</h3>
+                                <p className="text-lg text-gray-700">Program Vokasi, Program Studi Produksi Media</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bagian Keahlian Inti */}
+                    <section id="skills" className="py-20 bg-white px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">Keahlian Inti Saya 🛠️</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {Object.entries(skills).map(([category, skillList]) => (
+                                    <div key={category} className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <h3 className="text-2xl font-semibold text-purple-700 mb-4 border-b-2 border-purple-200 pb-2">{category}</h3>
+                                        <ul className="list-disc list-inside text-gray-700 space-y-2">
+                                            {skillList.map((skill, index) => (
+                                                <li key={index} className="flex items-center">
+                                                    <svg className="w-4 h-4 mr-2 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                                                    {skill}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bagian Pengalaman Profesional & Organisasi */}
+                    <section id="experience" className="py-20 bg-gray-100 px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">Pengalaman Profesional & Organisasi 💼</h2>
+                            <div className="space-y-8">
+                                {professionalExperience.map((exp, index) => (
+                                    <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <div className="flex justify-between items-center mb-2">
+                                            <h3 className="text-2xl font-bold text-purple-700">{exp.title}</h3>
+                                            <span className="text-md text-gray-600">{exp.duration}</span>
+                                        </div>
+                                        <p className="text-lg font-semibold text-purple-600 mb-3">{exp.role}</p>
+                                        <p className="text-gray-700 leading-relaxed">{exp.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bagian Pengalaman Sukarelawan */}
+                    <section id="volunteer" className="py-20 bg-white px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">Pengalaman Sukarelawan 🙏</h2>
+                            <div className="space-y-8">
+                                {volunteerExperience.map((exp, index) => (
+                                    <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <div className="flex justify-between items-center mb-2">
+                                            <h3 className="text-2xl font-bold text-purple-700">{exp.title}</h3>
+                                            {exp.duration && <span className="text-md text-gray-600">{exp.duration}</span>}
+                                        </div>
+                                        <p className="text-lg font-semibold text-purple-600 mb-3">{exp.organization}</p>
+                                        <p className="text-gray-700 leading-relaxed">{exp.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bagian Penghargaan & Sertifikasi */}
+                    <section id="awards-certs" className="py-20 bg-gray-100 px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">Penghargaan & Sertifikasi 🏆</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 className="text-3xl font-bold text-purple-700 mb-6">Penghargaan</h3>
+                                    <ul className="space-y-4">
+                                        {awardsCertifications.awards.map((award, index) => (
+                                            <li key={index} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                                                <p className="text-lg font-semibold text-purple-600">{award.name}</p>
+                                                <p className="text-gray-700 text-sm">{award.issuer} ({award.date})</p>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="text-3xl font-bold text-purple-700 mb-6">Sertifikasi & Kursus</h3>
+                                    <ul className="space-y-4">
+                                        {awardsCertifications.certifications.map((cert, index) => (
+                                            <li key={index} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                                                <p className="text-lg font-semibold text-purple-600">{cert.name}</p>
+                                                <p className="text-gray-700 text-sm">{cert.issuer}</p>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bagian Proyek Unggulan */}
+                    <section id="projects" className="py-20 bg-white px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-4xl font-bold text-center text-purple-800 mb-12">Proyek Unggulan Saya 🚀</h2>
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                                {projects.map((project, index) => (
+                                    <div key={index} className="bg-gray-50 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300">
+                                        <div className="md:w-1/2 flex-shrink-0">
+                                            <img src={project.image} alt={project.title} className="w-full h-48 md:h-full object-cover"/>
+                                        </div>
+                                        <div className="p-6 md:w-1/2">
+                                            <h3 className="text-2xl font-bold text-purple-700 mb-3">{project.title}</h3>
+                                            {/* Menampilkan peran jika ada (khusus untuk proyek film) */}
+                                            {project.role && <p className="text-lg font-semibold text-purple-600 mb-2">Peran: {project.role}</p>}
+                                            <p className="text-gray-700 mb-4 text-sm">{project.summary}</p>
+                                            <div className="mb-4">
+                                                <p className="font-semibold text-purple-600">Tools Diterapkan:</p>
+                                                <div className="flex flex-wrap gap-2 mt-1">
+                                                    {project.tools.map((tool, i) => (
+                                                        <span key={i} className="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">{tool}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div className="mb-4">
+                                                <p className="font-semibold text-purple-600">Dampak Tercapai:</p>
+                                                <p className="text-gray-700 text-sm">{project.impact}</p>
+                                            </div>
+                                            <div className="flex flex-wrap gap-4 mt-6">
+                                                {project.liveDemo && (
+                                                    <a
+                                                        href={project.liveDemo}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="flex items-center bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-full text-sm transition duration-300"
+                                                    >
+                                                        <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057 .458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"></path></svg>
+                                                        Demo Live
+                                                    </a>
+                                                )}
+                                                {/* Mengubah link GitHub menjadi "Link Proyek" dengan ikon link umum */}
+                                                {project.github && (
+                                                    <a
+                                                        href={project.github}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full text-sm transition duration-300"
+                                                    >
+                                                        <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.414 1.414a1 1 0 001.414 1.414zM5.414 15.414a2 2 0 11-2.828-2.828l3-3a2 2 0 012.828 0 1 1 0 001.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 005.656 5.656l1.414-1.414a1 1 0 00-1.414-1.414z" clipRule="evenodd"></path></svg>
+                                                        Link Proyek
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bagian Hubungi Saya */}
+                    <section id="contact" className="py-20 bg-purple-700 text-white px-6">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <h2 className="text-4xl font-bold mb-6">Hubungi Saya ✉️</h2>
+                            <p className="text-lg mb-8 leading-relaxed">
+                                Tertarik untuk berkolaborasi atau ingin tahu lebih banyak? Jangan ragu untuk menghubungi saya!
+                            </p>
+                            <div className="space-y-6">
+                                <a
+                                    href="mailto:taniarchmdn@gmail.com"
+                                    className="flex items-center justify-center text-lg bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition duration-300 transform hover:scale-105"
+                                >
+                                    <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                                    taniarchmdn@gmail.com
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/in/tania-putri-rachmadani-052001289/?trk=public-profile-join-page"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center text-lg bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition duration-300 transform hover:scale-105"
+                                >
+                                    <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.98-.018-2.247-1.37-2.247-1.372 0-1.586 1.071-1.586 2.18V16.338H7.338V6.87h2.645v1.218h.036c.367-.697 1.267-1.428 2.617-1.428C16.052 6.66 17 8.04 17 10.457v5.881zM3.66 4.966c.805 0 1.455-.65 1.455-1.455C5.115 2.706 4.465 2.056 3.66 2.056c-.805 0-1.455.65-1.455 1.455.001.805.65 1.455 1.455 1.455zM2.203 16.338h2.91v-9.468h-2.91v9.468z" clipRule="evenodd"></path></svg>
+                                    LinkedIn Profile Anda
+                                </a>
+                                <a
+                                    href="https://github.com/taniiarch"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center text-lg bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition duration-300 transform hover:scale-105"
+                                >
+                                    <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.418 2.865 8.188 6.839 9.508.499.09.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.15-.11-1.46-.08-1.46.353-.242.66-.02.66-.02.393.027.597.359.597.359.351.595.92.423 1.147.323.036-.251.136-.423.232-.521-2.654-.3-5.466-1.325-5.466-5.93 0-1.312.469-2.387 1.236-3.226-.124-.3-.536-1.524.118-3.176 0 0 .38-.125 1.25.485.36-.1.74-.15 1.125-.15.385 0 .765.05 1.125.15.87-.61 1.25-.485 1.25-.485.654 1.652.242 2.876.118 3.176.766.839 1.235 1.914 1.235 3.226 0 4.618-2.816 5.626-5.478 5.924.43.37.817 1.109.817 2.234 0 1.61-.015 2.906-.015 3.297 0 .267.18.577.688.483C17.135 18.188 20 14.418 20 10c0-5.523-4.477-10-10-10z" clipRule="evenodd"></path></svg>
+                                    GitHub Profile Anda
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="py-8 bg-gray-900 text-white text-center text-sm">
+                        <p>&copy; {new Date().getFullYear()} Tania Putri Rachmadani. Semua Hak Dilindungi.</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        // Mount the React App to the DOM
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
